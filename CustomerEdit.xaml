@@ -19,13 +19,13 @@
                 <Image Source="{Binding Source={x:Static const:ImageConstants.UNDO_ICON}}"/>
             </Button>
         </ToolBar>
-        
+
         <GroupBox Header="Customer Info">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    
+
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -41,8 +41,36 @@
 
                 <Label Grid.Column="0" Grid.Row="2">Phone</Label>
                 <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Customer.CompanyPhoneNumber}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Main Constact">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
+                <Label Grid.Column="0" Grid.Row="0">First</Label>
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Customer.MainContactFirstName}"/>
 
+                <Label Grid.Column="0" Grid.Row="1">Last Name</Label>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=Customer.MainContactLastName}"/>
+
+                <Label Grid.Column="0" Grid.Row="2">Contact Number</Label>
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Customer.MainContactNumber}"/>
+
+                <Label Grid.Column="0" Grid.Row="3">Role</Label>
+                <ComboBox Grid.Column="1" Grid.Row="3" Text="{Binding Path=Customer.MainContactRole}" Width="200" IsEditable="True">
+                    <ComboBoxItem>CEO</ComboBoxItem>
+                    <ComboBoxItem>Admin</ComboBoxItem>
+                    <ComboBoxItem>Department Manager</ComboBoxItem>
+                </ComboBox>
             </Grid>
         </GroupBox>
     </StackPanel>
