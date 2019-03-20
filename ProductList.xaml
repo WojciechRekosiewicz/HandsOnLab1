@@ -8,13 +8,24 @@
     <converters:CurrencyConverter x:Key="currencyConverter" />
   </UserControl.Resources>
   <ListView ItemsSource="{Binding Path=Products}">
+        <ListView.ItemContainerStyle>
+            <Style TargetType="{x:Type ListViewItem}">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            </Style>
+        </ListView.ItemContainerStyle>
         <ListView.View>
             <GridView>
                 <GridViewColumn Header="Code" DisplayMemberBinding="{Binding Path=Code}"/>
                 <GridViewColumn Header="Sku" DisplayMemberBinding="{Binding Path=Sku}"/>
                 <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
                 <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Path=ShortDescription}"/>
-                <GridViewColumn Header="UnitPrice" DisplayMemberBinding="{Binding Path=UnitPrice}"/>
+                <GridViewColumn Header="UnitPrice">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=UnitPrice, Converter={StaticResource currencyConverter}}" TextAlignment="Right"/>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
             </GridView>
         </ListView.View>
     </ListView>
