@@ -3,15 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:const="clr-namespace:HandsOnLab1.Constants"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HandsOnLab1"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:HandsOnLab1.Converters"
-        
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:EnumListConverter x:Key="enumListConverter"/>
         <converters:EnumValueToDescriptionConverter x:Key="enumValueConverter"/>
+
+        <Style x:Key="labelColumnStyle" TargetType="{x:Type ColumnDefinition}">
+            <Setter Property="Width" Value="200"/>
+        </Style>
+        <Style x:Key="dataColumnStyle" TargetType="{x:Type ColumnDefinition}">
+            <Setter Property="Width" Value="Auto"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Width" Value="200"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Width" Value="200"/>
+        </Style>
     </UserControl.Resources>
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" CanExecute="CanSave" Executed="ExecuteSave"/>
@@ -30,9 +41,8 @@
         <GroupBox Header="Customer Info">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-
+                    <ColumnDefinition Style="{StaticResource labelColumnStyle}"/>
+                    <ColumnDefinition Style="{StaticResource dataColumnStyle}"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -54,8 +64,8 @@
         <GroupBox Header="Main Contact">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Style="{StaticResource labelColumnStyle}"/>
+                    <ColumnDefinition Style="{StaticResource dataColumnStyle}"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -81,8 +91,8 @@
         <GroupBox Header="Address">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Style="{StaticResource labelColumnStyle}"/>
+                    <ColumnDefinition Style="{StaticResource dataColumnStyle}"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -93,6 +103,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                
                 <Label Grid.Column="0" Grid.Row="0">Address 1</Label>
                 <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Customer.Address1}"/>
 
@@ -109,7 +120,8 @@
                 <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Path=Customer.City}"/>
 
                 <Label Grid.Column="0" Grid.Row="5">State</Label>
-                <ComboBox x:Name="ctrState" Grid.Column="1" Grid.Row="5"/>
+                <ComboBox x:Name="ctrState" SelectedValue="{Binding Path=Customer.State,
+                Converter={StaticResource enumValueConverter}}" Grid.Column="1" Grid.Row="5"/>
 
                 <Label Grid.Column="0" Grid.Row="6">PostCode</Label>
                 <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding Path=Customer.PostCode}"/>
