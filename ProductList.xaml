@@ -7,7 +7,7 @@
   <UserControl.Resources>
     <converters:CurrencyConverter x:Key="currencyConverter" />
   </UserControl.Resources>
-  <DockPanel>
+  <ListView>
     <!--Place the Product list here-->
-  </DockPanel>
+  </ListView>
 </UserControl>

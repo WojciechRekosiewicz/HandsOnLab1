@@ -21,9 +21,20 @@ namespace HandsOnLab1
 
     public partial class ProductList : System.Windows.Controls.UserControl
     {
+        ProductSummaryCollection _products;
+
+        public ProductSummaryCollection Products
+        {
+            get { return _products; }
+        }
+
         public ProductList()
         {
+       
+            
             InitializeComponent();
+            _products = ProductAgent.GetProductList();
+            DataContext = this;
             
         }
     }
