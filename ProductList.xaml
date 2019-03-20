@@ -7,7 +7,15 @@
   <UserControl.Resources>
     <converters:CurrencyConverter x:Key="currencyConverter" />
   </UserControl.Resources>
-  <ListView>
-    <!--Place the Product list here-->
-  </ListView>
+  <ListView ItemsSource="{Binding Path=Products}">
+        <ListView.View>
+            <GridView>
+                <GridViewColumn Header="Code" DisplayMemberBinding="{Binding Path=Code}"/>
+                <GridViewColumn Header="Sku" DisplayMemberBinding="{Binding Path=Sku}"/>
+                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Path=ShortDescription}"/>
+                <GridViewColumn Header="UnitPrice" DisplayMemberBinding="{Binding Path=UnitPrice}"/>
+            </GridView>
+        </ListView.View>
+    </ListView>
 </UserControl>
