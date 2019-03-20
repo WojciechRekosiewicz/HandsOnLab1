@@ -22,5 +22,15 @@ namespace HandsOnLab1
         {
             InitializeComponent();
         }
+
+        private void CanSave(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ExecuteSave(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Assume the save worked");
+        }
     }
 }

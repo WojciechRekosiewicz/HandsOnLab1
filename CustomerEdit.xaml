@@ -7,6 +7,9 @@
              xmlns:local="clr-namespace:HandsOnLab1"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Save" CanExecute="CanSave" Executed="ExecuteSave"/>
+    </UserControl.CommandBindings>
     <StackPanel>
         <ToolBar>
             <Button Command="ApplicationCommands.Save">
