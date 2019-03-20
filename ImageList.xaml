@@ -4,11 +4,18 @@
   >
     <UserControl.Resources>
         <DataTemplate x:Key="ImageItem" DataType="{x:Type ListBoxItem}">
-            <Image Source="{Binding}" MaxWidth="{Binding ElementName=ctrImageSize, Path=Value}"/>
+            <Image Source="{Binding}" MaxWidth="{Binding ElementName=ctrImageSize, Path=Value}" Margin="10"/>
         </DataTemplate>
     </UserControl.Resources>
   <DockPanel>
         <Slider x:Name="ctrImageSize" DockPanel.Dock="Top" Minimum="50" Maximum="200" Value="150"/>
-        <ListBox ItemsSource="{Binding Path=Images}" ItemTemplate="{StaticResource ImageItem}"/>
+        <ListBox ItemsSource="{Binding Path=Images}" ItemTemplate="{StaticResource ImageItem}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </DockPanel>
 </UserControl>
