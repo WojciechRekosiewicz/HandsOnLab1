@@ -25,6 +25,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -36,10 +37,12 @@
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Path=Customer.AccountId}"/>
 
                 <Label Grid.Column="0" Grid.Row="1">Company Name</Label>
-                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Path=Customer.CompanyName}"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=Customer.CompanyName}"/>
 
                 <Label Grid.Column="0" Grid.Row="2">Phone</Label>
-                <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Path=Customer.CompanyPhoneNumber}"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Customer.CompanyPhoneNumber}"/>
+
+
             </Grid>
         </GroupBox>
     </StackPanel>
